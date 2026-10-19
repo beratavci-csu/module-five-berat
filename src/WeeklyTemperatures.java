@@ -33,7 +33,7 @@ public class WeeklyTemperatures {
 	    
 
 	    
-	    while((true)) {
+	    while((isRunning)) {
 	    	weekAverage = 0;
 	    	
 	    	System.out.println("");
