@@ -5,13 +5,16 @@ import java.util.Scanner;
 public class WeeklyTemperatures {
 
 	public static void main (String [] args) {
-		int i;
-		final int NUM_ELEMENTS = 7;
-		
-		
+
 		Scanner scnr = new Scanner(System.in);
+		boolean isRunning = true;
+		int i;
+		double weekAverage = 0;
+		String dayInput = "";
+		
 	    ArrayList<String> weekDay = new ArrayList<String>(); 
-	    ArrayList<Integer> dayTemp = new ArrayList<Integer>(); 
+	    ArrayList<Double> dayTemp = new ArrayList<Double>();
+	    
 	    weekDay.add("Monday");
 	    weekDay.add("Tuesday");
 	    weekDay.add("Wednesday");
@@ -20,15 +23,64 @@ public class WeeklyTemperatures {
 	    weekDay.add("Saturday");
 	    weekDay.add("Sunday");
 	    
-	    
+	    dayTemp.add(60.0);
+	    dayTemp.add(63.5);
+	    dayTemp.add(64.5);
+	    dayTemp.add(70.5);
+	    dayTemp.add(58.5);
+	    dayTemp.add(66.0);
+	    dayTemp.add(50.5);
 	    
 
-	    System.out.println("Please enter the average temperature on Monday");
-	    for (i = 0; i < NUM_ELEMENTS; ++i) {
-	         System.out.print("Number " + (i + 1) + ": ");
-	         dayTemp.add(scnr.nextDouble());
-	      }
+	    
+	    while((true)) {
+	    	weekAverage = 0;
+	    	
+	    	System.out.println("");
+		    System.out.println("Please type which day of the week (Monday through Sunday) for the average temperature.");
+		    System.out.println("Type 'Week' to see the average temperature for the entire week.");
+		    System.out.println("Type 'exit' to exit.");
+	    	System.out.print("Type here: ");
+	    	dayInput = scnr.next();
+	    	dayInput = dayInput.substring(0, 1).toUpperCase() + dayInput.substring(1); 
+	    	
+	    	System.out.println("");
+	    	
+	    	
+	        if (dayInput.equals("Exit")) {
+	        	System.out.println("Exiting...");
+	        	break;
+	        } 
+	        
+
+	        else if (dayInput.equals("Week")) {
+	        	 for (i = 0; i < weekDay.size(); ++i) {
+	        		 System.out.println(weekDay.get(i) + " : " + dayTemp.get(i) + "°F");
+	        		 weekAverage += dayTemp.get(i);
+	        	 }
+        		 System.out.println("This week's average temperature: " + String.format("%.2f", weekAverage/7) + "°F"); 
+	        }
+	        
+	        
+	        else if (weekDay.contains(dayInput)) {
+	        	 for (i = 0; i < weekDay.size(); ++i) {
+		    	    if (weekDay.get(i).equalsIgnoreCase(dayInput)) {
+		    	    		System.out.println(weekDay.get(i) + " : " + dayTemp.get(i)+ "°F");
+		    	    }
+	        	 }
+	        }	        
+	        
+	        
+	        else {
+		    	System.out.println("Invalid Input!");
+		    	System.out.println("Exiting....");
+		    	break;
+	        }
+	    	
+	    }
+	    System.exit(0);
 	}
+	
 	
 }
 	
