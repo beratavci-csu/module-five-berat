@@ -64,7 +64,7 @@ public class WeeklyTemperatures {
 	        
 	        else if (weekDay.contains(dayInput)) {
 	        	 for (i = 0; i < weekDay.size(); ++i) {
-		    	    if (weekDay.get(i).equalsIgnoreCase(dayInput)) {
+		    	    if (weekDay.get(i).equals(dayInput)) {
 		    	    		System.out.println(weekDay.get(i) + " : " + dayTemp.get(i)+ "°F");
 		    	    }
 	        	 }
