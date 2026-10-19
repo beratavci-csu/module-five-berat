@@ -81,14 +81,8 @@ public class WeeklyTemperatures {
 	    System.exit(0);
 	}
 	
-	
 }
 	
-
-
-
-
-
 
 
 
